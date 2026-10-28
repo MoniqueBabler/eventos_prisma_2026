@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Eventos Climáticos</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    
+<style>
+    /* GERAL */
+    * { box-sizing: border-box; }
+
+    body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: Arial, sans-serif;
+        background: #f4f8f6;
+        color: #243c38;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* CABEÇALHO */
+    header {
+        background: #103f3a;
+        color: white;
+        padding: 25px 7%;
+    }
+
+    header h1 { margin: 0; font-size: 26px; }
+    header p { margin: 8px 0 0; color: #c7e8dc; font-size: 14px; }
+
+    /* CONTEÚDO */
+    main {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 20px;
+    }
+
+    .login-container {
+        width: 100%;
+        max-width: 420px;
+        background: white;
+        padding: 38px;
+        border-radius: 16px;
+        box-shadow: 0 8px 30px #103f3a15;
+    }
+
+    .icone {
+        width: 62px;
+        height: 62px;
+        background: #e2f4eb;
+        color: #116b60;
+        border-radius: 15px;
+        display: grid;
+        place-items: center;
+        font-size: 30px;
+        margin-bottom: 22px;
+    }
+
+    .login-container h2 {
+        margin: 0 0 10px;
+        font-size: 26px;
+        color: #103f3a;
+    }
+
+    .descricao {
+        color: #728a80;
+        font-size: 14px;
+        line-height: 1.6;
+        margin-bottom: 28px;
+    }
+
+    /* FORMULÁRIO */
+    .campo { margin-bottom: 20px; }
+
+    .campo label {
+        display: block;
+        font-weight: bold;
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+
+    .campo input {
+        width: 100%;
+        padding: 13px;
+        border: 1px solid #d4e4dd;
+        border-radius: 9px;
+        outline: none;
+        font-size: 15px;
+        background: #f9fcfa;
+    }
+
+    .campo input:focus {
+        border-color: #31a58a;
+        box-shadow: 0 0 0 3px #31a58a20;
+    }
+
+    .btn-login {
+        width: 100%;
+        padding: 14px;
+        background: #116b60;
+        color: white;
+        border: none;
+        border-radius: 9px;
+        font-size: 15px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .btn-login:hover { background: #0c5149; }
+
+    #mensagem {
+        color: #b42318;
+        font-size: 14px;
+        margin-top: 16px;
+        text-align: center;
+    }
+
+    /* RODAPÉ */
+    footer {
+        padding: 20px;
+        text-align: center;
+        color: #84998f;
+        font-size: 13px;
+    }
+
+    /* CELULAR */
+    @media (max-width: 480px) {
+        header { padding: 22px; }
+        .login-container { padding: 27px 22px; }
+        .login-container h2 { font-size: 23px; }
+    }
+</style>
+
+</head>
+
+<body>
+
+    <header>
+        <h1>Eventos Climáticos</h1>
+        <p>Monitoramento e registro de eventos climáticos</p>
+    </header>
+
+    <main>
+        <section class="login-container">
+
+            <div class="icone" aria-hidden="true">☁</div>
+
+            <h2>Bem-vindo!</h2>
+
+            <p class="descricao">
+                Entre na sua conta para acompanhar e gerenciar
+                os registros de eventos climáticos.
+            </p>
+
+            <form id="formLogin">
+
+                <div class="campo">
+                    <label for="email">E-mail</label>
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Digite seu e-mail"
+                        autocomplete="username"
+                        required
+                    >
+                </div>
+
+                <div class="campo">
+                    <label for="senha">Senha</label>
+                    <input
+                        type="password"
+                        id="senha"
+                        placeholder="Digite sua senha"
+                        autocomplete="current-password"
+                        required
+                    >
+                </div>
+
+                <button type="submit" class="btn-login">
+                    Entrar na plataforma
+                </button>
+
+                <p id="mensagem" role="status" aria-live="polite"></p>
+
+            </form>
+
+        </section>
+    </main>
+
+    <footer>
+        Projeto Eventos Climáticos | Desenvolvimento de Sistemas
+    </footer>
+
+    <script src="js/login.js"></script>
+
+</body>
+</html>

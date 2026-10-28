@@ -1,0 +1,263 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos Climáticos</title>
+    <link rel="stylesheet" href="css/style.css">
+
+<style>
+    * { box-sizing: border-box; }
+
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f4f8f6;
+        color: #243c38;
+    }
+
+    header {
+        background: #103f3a;
+        color: white;
+        padding: 25px 7%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    header h1 { margin: 0; font-size: 26px; }
+    header p { margin: 8px 0 0; color: #c7e8dc; }
+
+    button {
+        border: none;
+        border-radius: 9px;
+        padding: 12px 18px;
+        cursor: pointer;
+    }
+
+    #btnSair {
+        background: white;
+        color: #116b60;
+        font-weight: bold;
+    }
+
+    main {
+        width: 90%;
+        max-width: 1000px;
+        margin: 35px auto;
+    }
+
+    .apresentacao { margin-bottom: 25px; }
+    .apresentacao h2 { color: #103f3a; margin-bottom: 8px; }
+    .apresentacao p { color: #728a80; line-height: 1.6; }
+
+    .painel {
+        background: white;
+        padding: 28px;
+        border-radius: 15px;
+        margin-bottom: 25px;
+        box-shadow: 0 5px 20px #103f3a10;
+    }
+
+    .painel h2 { color: #116b60; margin-top: 0; }
+
+
+    .formulario {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+    }
+
+    .campo {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .campo label { font-weight: bold; font-size: 14px; }
+
+    .campo input, .campo select {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #d4e4dd;
+        border-radius: 9px;
+        background: #f9fcfa;
+    }
+
+    .campo input:focus, .campo select:focus {
+        outline: 2px solid #31a58a;
+    }
+
+    .campo-completo { grid-column: 1 / -1; }
+
+    .botoes {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 20px;
+    }
+
+    #btnSalvar { background: #116b60; color: white; }
+    #btnCancelar { background: #e6ebf0; color: #263445; }
+    #mensagem { color: #116b60; margin-top: 15px; }
+
+    #eventos { display: grid; gap: 15px; }
+
+    .evento-card {
+        background: #f9fcfa;
+        padding: 20px;
+        border: 1px solid #dcebe3;
+        border-left: 4px solid #31a58a;
+        border-radius: 10px;
+    }
+
+    .evento-card h3 { color: #116b60; margin: 0 0 10px; }
+    .evento-card p { color: #647e73; line-height: 1.6; }
+    .evento-card button { margin: 8px 8px 0 0; }
+
+    .btn-editar { background: #e1f2e9; color: #116b60; }
+    .btn-excluir { background: #fde9e7; color: #b43f3f; }
+
+    footer {
+        text-align: center;
+        padding: 25px;
+        color: #84998f;
+        font-size: 13px;
+    }
+
+    @media (max-width: 600px) {
+        header { padding: 20px; }
+        main { width: 94%; margin-top: 20px; }
+        .painel { padding: 20px; }
+        .formulario { grid-template-columns: 1fr; }
+        .campo-completo { grid-column: auto; }
+    }
+</style>
+
+</head>
+
+<body>
+
+    <header>
+        <div>
+            <h1>Eventos Climáticos</h1>
+            <p>Monitoramento e registro de eventos climáticos</p>
+        </div>
+
+        <button type="button" id="btnSair">Sair da conta</button>
+    </header>
+
+    <main>
+
+        <section class="apresentacao">
+            <h2>Olá, <span id="nomeUsuario">Usuário</span>!</h2>
+            <p>
+                Acompanhe os eventos climáticos registrados e cadastre
+                novas ocorrências para manter as informações organizadas.
+            </p>
+        </section>
+
+        <section class="painel">
+            <h2 id="tituloFormulario">Cadastrar evento</h2>
+
+            <form id="formEvento">
+                <input type="hidden" id="eventoId">
+
+                <div class="formulario">
+
+                    <div class="campo">
+                        <label for="cidade">Cidade</label>
+                        <input
+                            type="text"
+                            id="cidade"
+                            placeholder="Ex.: Campinas"
+                            maxlength="50"
+                            required
+                        >
+                    </div>
+
+                    <div class="campo">
+                        <label for="tipoEvento">Tipo de evento</label>
+                        <select id="tipoEvento" required>
+                            <option value="">Selecione o evento</option>
+                            <option value="Tempestade">Tempestade</option>
+                            <option value="Queimada">Queimada</option>
+                            <option value="Geada">Geada</option>
+                            <option value="Enchente">Enchente</option>
+                            <option value="Seca">Seca</option>
+                            <option value="Granizo">Granizo</option>
+                            <option value="Onda de calor">Onda de calor</option>
+                            <option value="Deslizamento">Deslizamento</option>
+                            <option value="Outro">Outro</option>
+                        </select>
+                    </div>
+
+                    <div class="campo">
+                        <label for="temperaturaMaxima">
+                            Temperatura máxima (°C)
+                        </label>
+                        <input
+                            type="number"
+                            id="temperaturaMaxima"
+                            placeholder="Ex.: 35"
+                            step="0.1"
+                        >
+                    </div>
+
+                    <div class="campo">
+                        <label for="data">Data do evento</label>
+                        <input type="date" id="data" required>
+                    </div>
+
+                    <div class="campo campo-completo">
+                        <label for="nivelImpacto">Nível de impacto</label>
+                        <select id="nivelImpacto" required>
+                            <option value="">Selecione o impacto</option>
+                            <option value="Baixo">Baixo</option>
+                            <option value="Médio">Médio</option>
+                            <option value="Alto">Alto</option>
+                            <option value="Muito alto">Muito alto</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="botoes">
+                    <button type="submit" id="btnSalvar">
+                        Cadastrar evento
+                    </button>
+
+                    <button
+                        type="button"
+                        id="btnCancelar"
+                        hidden
+                    >
+                        Cancelar edição
+                    </button>
+                </div>
+
+                <p id="mensagem" role="status" aria-live="polite"></p>
+            </form>
+        </section>
+
+        <section class="painel">
+            <h2>Eventos registrados</h2>
+
+            <div id="eventos">
+                Carregando eventos...
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Projeto Eventos Climáticos | Desenvolvimento de Sistemas</p>
+    </footer>
+
+    <script src="js/home.js"></script>
+
+</body>
+</html>
