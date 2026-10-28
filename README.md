@@ -44,15 +44,15 @@ O sistema conta com uma interface simples e organizada, conectada a um banco de 
 ### Tela de Login
 Permite que o usuário acesse o sistema utilizando seu e-mail e senha.
 
-![Tela de Login](../assets/login.png)
+![Tela de Login](./assets/login.png)
 
 ### Cadastro de Eventos
 Permite registrar cidade, tipo de evento, temperatura máxima, data e nível de impacto.
-![Tela inicial](../assets/cadastro.png)
+![Tela inicial](./assets/cadastro.png)
 
 ### Gerenciamento de Eventos
 Exibe os eventos cadastrados, permitindo editar ou excluir registros existentes.
-![Tela inicial](../assets/registros.png)
+![Tela inicial](./assets/registros.png)
 
 ## Estrutura do projeto
 
